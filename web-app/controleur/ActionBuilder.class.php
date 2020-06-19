@@ -16,6 +16,9 @@ class ActionBuilder{
 			case "pastWorkoutAction" :
 				return new PastWorkoutAction();
 				break;
+			case "insertNewExerciseAction" :
+				return new InsertNewExerciseAction();
+				break;
 			default :
 				return new DefaultAction();
 		}
