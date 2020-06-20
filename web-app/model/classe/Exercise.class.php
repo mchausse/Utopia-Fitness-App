@@ -1,7 +1,6 @@
 <?php
 class Exercise {
     private $id,
-            $workout,
             $name,
             $date,
             $nbSeries,
@@ -9,9 +8,6 @@ class Exercise {
 
     public function getId() {
         return $this->id;
-    }
-    public function getWorkout() {
-        return $this->workout;
     }
     public function getName() {
         return $this->name;
@@ -28,24 +24,20 @@ class Exercise {
     public function setId($id) {
         $this->id = $id;
     }
-    public function setWorkout($workout) {
-        $this->workout = $workout;
-    }
     public function setName($name) {
-        $this->workout = $name;
+        $this->name = $name;
     }
     public function setDate($date) {
-        $this->workout = $date;
+        $this->date = $date;
     }
     public function setNbSeries($nbSeries) {
-        $this->workout = $nbSeries;
+        $this->nbSeries = $nbSeries;
     }
     public function setRepetitions($repetitions) {
-        $this->workout = $repetitions;
+        $this->repetitions = $repetitions;
     }
     public function loadFromArray($array){
         $this->id=$array["idExercise"];
-        $this->workout=$array["idWorkout"];
         $this->name=$array["name"];
         $this->date=$array["date"];
         $this->nbSeries=$array["nbSeries"];
@@ -53,7 +45,6 @@ class Exercise {
     }
     public function loadFromObject($object){
         $this->id=$object->id;
-        $this->workout=$object->idWorkout;
         $this->name=$object->name;
         $this->date=$object->date;
         $this->nbSeries=$object->nbSeries;

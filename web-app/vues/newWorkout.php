@@ -9,9 +9,15 @@ $nbSeries = "1";
 $actionInsertNewExercise = "insertNewExerciseAction";
 
 // Validating if there are previous informations 
-if (ISSET($_REQUEST["idWorkout"])) {
-    $idWorkout=$_REQUEST["idWorkout"];
+if (ISSET($_REQUEST["name"])) {
+    $name=$_REQUEST["name"];
 }
+if (ISSET($_REQUEST["repetition1"])) {
+    $repetition1=$_REQUEST["repetition1"];
+}
+//if (ISSET($_REQUEST["nbSeries"])) {
+//    $nbSeries=$_REQUEST["nbSeries"];
+//}
 
 ?>
 <div id="workouts">
@@ -31,9 +37,7 @@ if (ISSET($_REQUEST["idWorkout"])) {
 
             <div class="card">
                 <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                    Exercise #1
-                    </a>
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">Exercise #1</a>
                 </div>
 
                 <!-- Details of the exercise -->
@@ -100,8 +104,7 @@ if (ISSET($_REQUEST["idWorkout"])) {
         $("#addExercise").click(function(){
             $("#exerciseList").append('<td><div class="form-group"><input type="text" id="rep'+numRep+'" name="repetition'+numRep+'" class="form-control" placeholder="Number of repetition"/></div></td>');
             $("#exerciseListHeader").append('<th></th>');
-            // Change the value of the nbSeries param
-            $("#nbSeries").val("numRep");
+            $("#nbSeries").val(numRep);
             numRep++;
         });
     });
