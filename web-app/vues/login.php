@@ -1,5 +1,9 @@
 <div id="accueil">
 <?php
+
+	if (ISSET($_SESSION["newExerciseNames"])) {
+		$_SESSION["newExerciseNames"] = null;
+	}
 	if (ISSET($_REQUEST["global_message"]))
 	   $msg="<span class=\"warningMessage\">".$_REQUEST["global_message"]."</span>";
 	$adresse = "";
