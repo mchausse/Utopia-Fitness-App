@@ -1,23 +1,42 @@
 <?php
-include('/classe/Database.class.php');
-include('/classe/Exercise.class.php');
-include('/request/ExerciseRequest.class.php');
+require_once('/model/classe/Database.class.php');
+require_once('/model/classe/Exercise.class.php');
+require_once('/model/request/ExerciseRequest.class.php');
 
-class ExerciseDAO extends ExerciseRequest{
+class ExerciseDAO extends ExerciseRequest {
 
     public function insert($exercise){
+        // Initiating the connection
 		$db = Database::getInstance();
-        $request = ExerciseRequest::INSERTEXERCISE;
+        $request = ExerciseRequest::$INSERTEXERCISE;
         $preparedRequest = $db->prepare($request);
-        $preparedRequest->execute(array(':idWorkout'->$exercise->workout, 
-                                        ':name'->$exercise->name, 
-                                        ':nbSeries'->$exercise->nbSeries, 
-                                        ':repetition'->$exercise->repetition));
+        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,true);
+
+    
 		try{
-            return $db->exec($request);
+            
+        // Assining the values to variables
+        $idExercise = null;
+        $idWorkout = 1;
+        $nameE = "push";
+        $nbSeries = 3;
+        $repetitions = "push";
+        echo json_encode(array(':idExercise' => $idExercise,
+                                            ':idWorkout' => $idWorkout,
+                                            ':nameE' => $nameE,
+                                            ':nbSeries' => $nbSeries,
+                                            ':repetitions' => $repetitions));
+
+            $preparedRequest->execute(array(':idExercise' => $idExercise,
+                                            ':idWorkout' => $idWorkout,
+                                            ':nameE' => $nameE,
+                                            ':nbSeries' => $nbSeries,
+                                            ':repetitions' => $repetitions));
         }
 		catch(PDOException $error){
-            return $error;
+            echo $error->getMessage();
+        } finally {
+            $db = null;
         }
 	}
 }
