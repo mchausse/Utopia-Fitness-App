@@ -13,15 +13,13 @@ class ExerciseDAO extends ExerciseRequest {
             
         // Assining the values to variables
         $idExercise = null;
-        $idWorkout = 1;
-        $nameE = "push";
-        $nbSeries = 3;
+        $name = "push";
+        $nbSeries = "5";
         $repetitions = "push";
     
 		try{
             $preparedRequest->execute(array(':idExercise' => $idExercise,
-                                            ':idWorkout' => $idWorkout,
-                                            ':nameE' => $nameE,
+                                            ':name' => $name,
                                             ':nbSeries' => $nbSeries,
                                             ':repetitions' => $repetitions));
         }
