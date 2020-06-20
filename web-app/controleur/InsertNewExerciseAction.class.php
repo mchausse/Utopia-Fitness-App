@@ -26,6 +26,10 @@ class InsertNewExerciseAction implements Action {
         $exerciseService = new ExerciseService();
         $exerciseService->insert($newExercise);
 
+        // Forward the exercise count
+        $_REQUEST["newExercise"] = $_REQUEST["newExercise"] + 1;
+        array_push($_SESSION["newExerciseNames"], $newExercise->getName());
+
         // Clear the values
         $newExercise = null;
         $_REQUEST['name'] = '';
