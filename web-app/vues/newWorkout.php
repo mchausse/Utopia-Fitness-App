@@ -1,15 +1,23 @@
 <?php
-if (!ISSET($_SESSION)) session_start();
+if (!ISSET($_SESSION)) { 
+    session_start();
+}
 // Defining variables
-$idWorkout = 0;
 $name = "";
 $repetition1 = "";
-$repetition2 = "";
-$repetition3 = "";
+$nbSeries = "1";
 $actionInsertNewExercise = "insertNewExerciseAction";
 
 // Validating if there are previous informations 
-if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
+if (ISSET($_REQUEST["name"])) {
+    $name=$_REQUEST["name"];
+}
+if (ISSET($_REQUEST["repetition1"])) {
+    $repetition1=$_REQUEST["repetition1"];
+}
+//if (ISSET($_REQUEST["nbSeries"])) {
+//    $nbSeries=$_REQUEST["nbSeries"];
+//}
 
 ?>
 <div id="workouts">
@@ -29,9 +37,7 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
 
             <div class="card">
                 <div class="card-header">
-                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                    Exercise #1
-                    </a>
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne">Exercise #1</a>
                 </div>
 
                 <!-- Details of the exercise -->
@@ -58,8 +64,6 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
                                             Series
                                         </th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
                                     </tr>
                                 </thead>
 
@@ -75,21 +79,11 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
                                                 <input type="text" id="rep1" name="repetition1" value="<?=$repetition1?>" class="form-control" placeholder="Number of repetition"/>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="text" id="rep2" name="repetition2" value="<?=$repetition2?>" class="form-control" placeholder="Number of repetition"/>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="text" id="rep3" name="repetition3" value="<?=$repetition3?>" class="form-control" placeholder="Number of repetition"/>
-                                            </div>
-                                        </td>
                                     </tr>
                                 </tbody>
 
                             </table>
-                            <input value="<?=$idWorkout?>" name="idWorkout" type="hidden"/>
+                            <input id="nbSeries" value="<?=$nbSeries?>" name="nbSeries" type="hidden"/>
                             <!-- Secret field for the name of the action -->
                             <input name="action" value="<?=$actionInsertNewExercise?>" type="hidden"/>
                             <!-- Submit the exercise -->
@@ -106,9 +100,12 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
 </div>
 <script>
     $(document).ready(function(){
+        var numRep = 2;
         $("#addExercise").click(function(){
-            $("#exerciseList").append('<td><div class="form-group"><input type="text" id="rep"  class="form-control" placeholder="Number of repetition"/></div></td>');
+            $("#exerciseList").append('<td><div class="form-group"><input type="text" id="rep'+numRep+'" name="repetition'+numRep+'" class="form-control" placeholder="Number of repetition"/></div></td>');
             $("#exerciseListHeader").append('<th></th>');
+            $("#nbSeries").val(numRep);
+            numRep++;
         });
     });
 </script>

@@ -1,5 +1,5 @@
 <?php
 abstract class ExerciseRequest {
-    static $INSERTEXERCISE = 'INSERT INTO `exercise` (`idExercise`, `idWorkout`, `nameE`, `dateE`, `nbSeries`, `repetitions`) VALUES (:idExercise, :idWorkout, :nameE, NOW(), :nbSeries, :repetitions)';
+    static $INSERTEXERCISE = 'INSERT INTO `exercise` (`idExercise`, `name`, `date`, `nbSeries`, `repetitions`) VALUES (:idExercise, :name, NOW(), :nbSeries, :repetitions)';
 }
 ?>
