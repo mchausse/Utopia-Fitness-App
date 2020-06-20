@@ -1,3 +1,17 @@
+<?php
+if (!ISSET($_SESSION)) session_start();
+// Defining variables
+$idWorkout = 0;
+$name = "";
+$repetition1 = "";
+$repetition2 = "";
+$repetition3 = "";
+$actionInsertNewExercise = "insertNewExerciseAction";
+
+// Validating if there are previous informations 
+if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
+
+?>
 <div id="workouts">
     <!-- Tab labels -->
     <ul class="nav nav-tabs nav-justified">
@@ -23,70 +37,63 @@
                 <!-- Details of the exercise -->
                 <div id="collapseOne" class="collapse show" data-parent="#newExercises">
                     <div class="card-body">
-                        <form>
+                        <form action="" method="post">
                                 
                             <!-- Name input -->
                             <div class="form-group">
                                 <label for="sel1">Select exercise:</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Push up</option>
-                                    <option>Jumping Jack</option>
-                                    <option>Sit up</option>
-                                    <option>Biceps</option>
+                                <select class="form-control" id="sel1" name="name" value="<?=$name?>">
+                                    <option value="push up">Push up</option>
+                                    <option value="Jumping Jack">Jumping Jack</option>
+                                    <option value="Sit up">Sit up</option>
+                                    <option value="Biceps">Biceps</option>
                                 </select>
                             </div>
                             
                             <!-- Serials and Repetitions -->
                             <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>Series</th>
+                                    <tr id="exerciseListHeader">
+                                        <th>
+                                            Series
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
-                                <tbody id="exerciseList">
-
-                                    <!-- Add a Serials -->
-                                    <tr>
+                                <tbody>
+                                    <tr id="exerciseList">
                                         <td>
-                                            <button type="button" class="btn btn-primary" id="addExercise">Add one +</button>
+                                            <!-- Add a row -->
+                                            <button type="button" class="btn btn-primary" id="addExercise">+</button>
                                         </td>
-                                    </tr>
-
-                                    <tr>
                                         <!-- Select the nomber of repetitions done for the Serial -->
                                         <td>
                                             <div class="form-group">
-                                                <label for="sel1">Number of repetition:</label>
-                                                <select class="form-control" id="sel1">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                    <option>10</option>
-                                                    <option>11</option>
-                                                    <option>12</option>
-                                                    <option>13</option>
-                                                    <option>14</option>
-                                                    <option>15</option>
-                                                    <option>16</option>
-                                                    <option>17</option>
-                                                    <option>18</option>
-                                                    <option>19</option>
-                                                    <option>20</option>
-                                                </select>
+                                                <input type="text" id="rep1" name="repetition1" value="<?=$repetition1?>" class="form-control" placeholder="Number of repetition"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" id="rep2" name="repetition2" value="<?=$repetition2?>" class="form-control" placeholder="Number of repetition"/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <input type="text" id="rep3" name="repetition3" value="<?=$repetition3?>" class="form-control" placeholder="Number of repetition"/>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
 
-                            <input type="submit" class="btn btn-info" value="Save">
+                            </table>
+                            <input value="<?=$idWorkout?>" name="idWorkout" type="hidden"/>
+                            <!-- Secret field for the name of the action -->
+                            <input name="action" value="<?=$actionInsertNewExercise?>" type="hidden"/>
+                            <!-- Submit the exercise -->
+                            <input type="submit" class="btn btn-info" value="Done!">
                         <form>
 
                     </div>
@@ -100,7 +107,8 @@
 <script>
     $(document).ready(function(){
         $("#addExercise").click(function(){
-            $("#exerciseList").append('<tr><td><div class="form-group"><label for="sel1">Number of repetition:</label><select class="form-control" id="sel1"><option>1</option><option>2</option><option>3</option><option>4</option></select></div></td></tr>');
+            $("#exerciseList").append('<td><div class="form-group"><input type="text" id="rep"  class="form-control" placeholder="Number of repetition"/></div></td>');
+            $("#exerciseListHeader").append('<th></th>');
         });
     });
 </script>
