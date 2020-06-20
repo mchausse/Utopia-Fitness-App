@@ -10,10 +10,6 @@ class ExerciseDAO extends ExerciseRequest {
 		$db = Database::getInstance();
         $request = ExerciseRequest::$INSERTEXERCISE;
         $preparedRequest = $db->prepare($request);
-        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,true);
-
-    
-		try{
             
         // Assining the values to variables
         $idExercise = null;
@@ -21,12 +17,8 @@ class ExerciseDAO extends ExerciseRequest {
         $nameE = "push";
         $nbSeries = 3;
         $repetitions = "push";
-        echo json_encode(array(':idExercise' => $idExercise,
-                                            ':idWorkout' => $idWorkout,
-                                            ':nameE' => $nameE,
-                                            ':nbSeries' => $nbSeries,
-                                            ':repetitions' => $repetitions));
-
+    
+		try{
             $preparedRequest->execute(array(':idExercise' => $idExercise,
                                             ':idWorkout' => $idWorkout,
                                             ':nameE' => $nameE,
