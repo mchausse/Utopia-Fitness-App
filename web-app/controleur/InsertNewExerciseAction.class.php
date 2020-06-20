@@ -13,7 +13,6 @@ class InsertNewExerciseAction implements Action {
 
         // Treat the incoming informations
         $newExercise = new Exercise();
-        $newExercise->setWorkout($_REQUEST['idWorkout']);
         $newExercise->setName($_REQUEST['name']);
         $newExercise->setNbSeries("3");
         $newExercise->setRepetitions($_REQUEST['repetition1']."/".$_REQUEST['repetition2']."/".$_REQUEST['repetition3']);
