@@ -1,9 +1,11 @@
 <?php
-include('/classe/Database.class.php');
-include('/classe/Exercise.class.php');
-include('/request/ExerciseRequest.class.php');
+require_once('/model/dao/ExerciseDAO.class.php');
 
 class ExerciseService extends ExerciseDAO {
+    
+    function insert($exercise) {
+        parent::insert($exercise);
+    }
 
 }
 ?>

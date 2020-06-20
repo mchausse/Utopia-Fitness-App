@@ -1,8 +1,8 @@
 <?php
+if (!ISSET($_SESSION)) session_start();
 // Defining variables
 $idWorkout = 0;
 $name = "";
-$nbSeries = 0;
 $repetition1 = "";
 $repetition2 = "";
 $repetition3 = "";
@@ -42,7 +42,7 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
                             <!-- Name input -->
                             <div class="form-group">
                                 <label for="sel1">Select exercise:</label>
-                                <select class="form-control" id="sel1" value="<?=$name?>">
+                                <select class="form-control" id="sel1" name="name" value="<?=$name?>">
                                     <option value="push up">Push up</option>
                                     <option value="Jumping Jack">Jumping Jack</option>
                                     <option value="Sit up">Sit up</option>
@@ -56,15 +56,19 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
                                     <tr id="exerciseListHeader">
                                         <th>
                                             Series
-                                            <!-- Add a row -->
-                                            <button type="button" class="btn btn-primary" id="addExercise">+</button>
                                         </th>
+                                        <th></th>
+                                        <th></th>
                                         <th></th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr id="exerciseList">
+                                        <td>
+                                            <!-- Add a row -->
+                                            <button type="button" class="btn btn-primary" id="addExercise">+</button>
+                                        </td>
                                         <!-- Select the nomber of repetitions done for the Serial -->
                                         <td>
                                             <div class="form-group">
@@ -85,6 +89,7 @@ if (ISSET($_REQUEST["idWorkout"]))$workout=$_REQUEST["idWorkout"];
                                 </tbody>
 
                             </table>
+                            <input value="<?=$idWorkout?>" name="idWorkout" type="hidden"/>
                             <!-- Secret field for the name of the action -->
                             <input name="action" value="<?=$actionInsertNewExercise?>" type="hidden"/>
                             <!-- Submit the exercise -->
