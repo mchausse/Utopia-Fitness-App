@@ -8,7 +8,7 @@ class ExerciseDAO extends ExerciseRequest {
     public function insert($exercise){
         // Initiating the connection
 		$db = Database::getInstance();
-        $request = ExerciseRequest::$INSERTEXERCISE;
+        $request = ExerciseRequest::$INSERT;
         $preparedRequest = $db->prepare($request);
             
         // Assining the values to variables
@@ -22,12 +22,60 @@ class ExerciseDAO extends ExerciseRequest {
                                             ':name' => $name,
                                             ':nbSeries' => $nbSeries,
                                             ':repetitions' => $repetitions));
-        }
-		catch(PDOException $error){
+        } catch(PDOException $error){
             echo $error->getMessage();
         } finally {
             $db = null;
         }
-	}
+    }
+    
+    public function selectAll() {
+        // Initiating the connection
+		$db = Database::getInstance();
+        $request = ExerciseRequest::$SELECTALL;
+
+        // Fetching the data
+		try{
+            $result = $db->query($request);
+        } catch(PDOException $error){
+            echo $error->getMessage();
+        } finally {
+            $db = null;
+        }
+
+        // Treating the values
+        $exerciseArray = array();
+        foreach($result as $exerciseResult) {
+            $exercise=new Exercise();
+            $exercise->loadFromArray($exerciseResult);
+            array_push($exerciseArray,$exercise);
+        }
+        return $exerciseArray;
+    }
+
+    public function selectAllOrderByDateAsc() {
+        // Initiating the connection
+		$db = Database::getInstance();
+        $request = ExerciseRequest::$SELECTALLORDERBYDATEASC;
+
+        // Fetching the data
+		try{
+            $result = $db->query($request);
+        } catch(PDOException $error){
+            echo $error->getMessage();
+        } finally {
+            $db = null;
+        }
+
+        // Treating the values
+        $exerciseArray = array();
+        foreach($result as $exerciseResult) {
+            $exercise=new Exercise();
+            $exercise->loadFromArray($exerciseResult);
+            array_push($exerciseArray,$exercise);
+        }
+        return $exerciseArray;
+    }
+
 }
 ?>

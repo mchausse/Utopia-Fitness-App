@@ -2,16 +2,15 @@
 if (!ISSET($_SESSION)) { 
     session_start();
 }
-
 ?>
 <div id="workouts">
     <!-- Tab labels -->
     <ul class="nav nav-tabs nav-justified">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="?action=newWorkoutAction">New Workout</a>
+            <a class="nav-link active" href="?action=newWorkoutAction">New Workout</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="?action=pastWorkoutAction">Past Workout</a>
+            <a class="nav-link" href="?action=pastWorkoutAction">Past Workout</a>
         </li>
     </ul>
     <!-- Tab panes -->

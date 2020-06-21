@@ -1,62 +1,63 @@
-#content{
-    margin-top: 10em;
+#content {
+  margin-top: 10em;
 }
 #background {
-    background-image: url(../img/Ndlef.jpg);
-    background-size: cover;
+  background-image: url(../img/Ndlef.jpg);
+  background-size: cover;
 }
-a{
-    color:azure;
+a {
+  color: azure;
 }
-a:hover{
-    color:lightgrey;
+a:hover {
+  color: lightgrey;
 }
-#loginForm{
-    color:lightgrey;
-    font-size:20px ;
-    /* text-shadow: 2px 2px black; */
+#loginForm {
+  color: lightgrey;
+  font-size: 20px;
+  /* text-shadow: 2px 2px black; */
 }
-#titre{
-    font-size: 50px;
-    font-weight: lighter;
+#titre {
+  font-size: 50px;
+  font-weight: lighter;
 }
-#workouts{
-    padding:15px;
-    border-radius: 4px;
-    margin:auto;
+#workouts {
+  padding: 15px;
+  border-radius: 4px;
+  margin: auto;
 }
-#workouts .nav-link{
-    font-size: 35;
-    font-weight: lighter;
-    color:lightgrey;
+#workouts .nav-link {
+  font-size: 35;
+  font-weight: lighter;
+  color: lightgrey;
 }
-#workouts .nav-link.active{
-    font-size: 35;
-    font-weight: lighter;
-    color:black;
+#workouts .nav-link.active {
+  font-size: 35;
+  font-weight: lighter;
+  color: black;
 }
-#workouts .tab-content{
-    background-color: white;
-    padding:10px;
-    padding-top:20px;
+#workouts .tab-content {
+  background-color: white;
+  padding: 10px;
+  padding-top: 20px;
 }
 #title {
-    text-align: center;
-    width: 500px;
-    color:azure;
+  text-align: center;
+  width: 500px;
+  color: azure;
 }
 #title h1 {
-    font-size: 70px;
-    top:-20px;
+  font-size: 70px;
+  top: -20px;
 }
 #title hr {
-    border-top:2px solid rgb(138, 137, 137);
-    margin-bottom:0.1px;
+  border-top: 2px solid rgb(138, 137, 137);
+  margin-bottom: 0.1px;
 }
-#newExercises a{
-    color:black;
+#newExercises,
+#pastExercises a {
+  color: black;
 }
 #footer {
-    position: fixed;
-    bottom: 10px;
+  position: fixed;
+  bottom: 10px;
 }
