@@ -10,16 +10,12 @@ class ActionBuilder{
 		switch ($nomAction){
 			case "loginAction" :
 				return new LoginAction();
-				break;
 			case "newWorkoutAction" :
 				return new NewWorkoutAction();
-				break;
 			case "pastWorkoutAction" :
 				return new PastWorkoutAction();
-				break;
 			case "insertNewExerciseAction" :
 				return new InsertNewExerciseAction();
-				break;
 			default :
 				return new DefaultAction();
 		}

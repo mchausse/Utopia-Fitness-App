@@ -7,5 +7,13 @@ class ExerciseService extends ExerciseDAO {
         parent::insert($exercise);
     }
 
+    function selectAll() {
+        return parent::selectAll();
+    }
+    
+    function selectAllOrderByDateDesc() {
+        return parent::selectAllOrderByDateDesc();
+    }
+
 }
 ?>

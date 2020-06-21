@@ -1,0 +1,15 @@
+#background {
+  background-image: url(../img/pastWorkout.jpg);
+  background-size: cover;
+  animation-name: fromNewToPastWorkout;
+  animation-duration: 4s;
+}
+
+@keyframes fromNewToPastWorkout {
+  from {
+    background-image: url(../img/newWorkout.jpg);
+  }
+  to {
+    background-image: url(../img/pastWorkout.jpg);
+  }
+}
