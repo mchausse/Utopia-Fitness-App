@@ -56,7 +56,7 @@ class ExerciseDAO extends ExerciseRequest {
     public function selectAllOrderByDateAsc() {
         // Initiating the connection
 		$db = Database::getInstance();
-        $request = ExerciseRequest::$SELECTALLORDERBYDATEASC;
+        $request = ExerciseRequest::$SELECTALLORDERBYDATEDESC;
 
         // Fetching the data
 		try{

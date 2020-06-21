@@ -53,7 +53,7 @@ a:hover {
   border-top: 2px solid rgb(138, 137, 137);
   margin-bottom: 0.1px;
 }
-#newExercises,
+#newExercises a,
 #pastExercises a {
   color: black;
 }
