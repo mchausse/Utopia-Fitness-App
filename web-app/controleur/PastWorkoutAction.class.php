@@ -23,7 +23,7 @@ class PastWorkoutAction implements Action {
 		foreach($exercises as $exercise) {
 			// True if the date as less than 8 days of difference
 			$difference = date_diff((new DateTime($exercise->getDate())), (new DateTime($currentDate)));
-			if( $difference->format('%a') < 8) {
+			if($difference->format('%a') < 8 ) {
 				array_push($_REQUEST['thisWeekExercise'],$exercise);
 			}
 		}

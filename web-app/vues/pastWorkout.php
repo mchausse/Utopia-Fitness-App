@@ -3,6 +3,7 @@ if (!ISSET($_SESSION)) {
     session_start();
 }
 ?>
+<link rel="stylesheet" href="./css/pastWorkout.css" type="text/css" />
 <div id="workouts">
     <!-- Tab labels -->
     <ul class="nav nav-tabs nav-justified">
@@ -16,23 +17,30 @@ if (!ISSET($_SESSION)) {
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="pastExercises">
-            <span class="pastExercisesTitle">This week's exercises</span>
-            <hr />
             <?php
-            if (sizeof($_REQUEST['thisWeekExercise'])) {
+            // Shows this week's exercises if there are any
+            if (sizeof($_REQUEST['thisWeekExercise']) > 0) {
+                ?>
+                <span class="pastExercisesTitle">This week's exercises</span>
+                <hr />
+                <?php
                 showExercises($_REQUEST['thisWeekExercise']);
             }
+            
 
-            if (sizeof($_REQUEST['lastTwoWeeksExercise'])) {
+            // Shows this week's exercises if there are any
+            if (sizeof($_REQUEST['lastTwoWeeksExercise']) > 0) {
                 ?>
                 <br />
-                <span class="pastExercisesTitle">Last two week's exercises</span >
+                <span  class="pastExercisesTitle">Last two week's exercises</span >
                 <hr />
                 <?php
                 showExercises($_REQUEST['lastTwoWeeksExercise']);
             }
             
-            if (sizeof($_REQUEST['moreThanTwoWeeksExercise'])) {
+
+            // Shows this week's exercises if there are any
+            if (sizeof($_REQUEST['moreThanTwoWeeksExercise']) > 0) {
                 ?>
                 <br />
                 <span  class="pastExercisesTitle">More than two week's exercises</span >
