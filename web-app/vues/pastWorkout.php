@@ -16,38 +16,33 @@ if (!ISSET($_SESSION)) {
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="pastExercises">
-            <h4>This week's exercises</h4>
+            <span class="pastExercisesTitle">This week's exercises</span>
             <hr />
             <?php
             if (ISSET($_REQUEST['thisWeekExercise'])) {
                 showExercises($_REQUEST['thisWeekExercise']);
             }
-            ?>
 
-            
-            <?php
             if (ISSET($_REQUEST['lastTwoWeeksExercise'])) {
                 ?>
                 <br />
-                <h4>Last two week's exercises</h4>
+                <span class="pastExercisesTitle">Last two week's exercises</span >
                 <hr />
                 <?php
                 showExercises($_REQUEST['lastTwoWeeksExercise']);
             }
-            ?>
-
-            <?php
+            
             if (ISSET($_REQUEST['moreThanTwoWeeksExercise'])) {
                 ?>
                 <br />
-                <h4>More than two week's exercises</h4>
+                <span  class="pastExercisesTitle">More than two week's exercises</span >
                 <hr />
                 <?php
                 showExercises($_REQUEST['moreThanTwoWeeksExercise']);
             } else {
                 ?>
                 <br />
-                <h4>No exercises past the last two week</h4>
+                <span  class="pastExercisesTitle">No exercises past the last two week</span >
                 <hr />
                 <?php
             }
@@ -62,12 +57,15 @@ function showExercises($exercises) {
         $exercise = $exercises[$i];
         ?>
 
-        <div class="card">
+        <div class="card exerciseCard" class="collapse">
             <div class="card-header">
-                    <span>
-                    <a class="card-link" data-toggle="collapse" href="#collapseOne"><?=$exercise->getName()?></a>
-                    - <?=$exercise->getDate()?>
-                    </span>
+                <a class="card-link" data-toggle="collapse" href="#exercise<?=$exercise->getId()?>"><?=$exercise->getName()?></a>
+                - <?=$exercise->getDate()?>
+            </div>
+            <div id="exercise<?=$exercise->getId()?>" data-parent="#pastExercises" class="collapse">
+                <div class="card-body" >
+                test
+                </div>
             </div>
         </div>
 

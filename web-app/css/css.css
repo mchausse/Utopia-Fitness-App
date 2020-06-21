@@ -61,3 +61,11 @@ a:hover {
   position: fixed;
   bottom: 10px;
 }
+.exerciseCard {
+  margin: 0.6em;
+}
+.pastExercisesTitle {
+  font-size: 25;
+  font-weight: lighter;
+  margin: 0.6em;
+}
