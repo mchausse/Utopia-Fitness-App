@@ -31,6 +31,7 @@ if (ISSET($_REQUEST["repetition1"])) {
 <div class="card">
     <div class="card-header">
         <a class="card-link" data-toggle="collapse" href="#collapseOne">Exercise #<?=(ISSET($_REQUEST["newExercise"]) ? $_REQUEST["newExercise"]+1 : 1)?></a>
+        <i class="fa fa-minus-square" style="font-size:24px;color:orange;position:absolute;right:10px;"></i>
     </div>
 
     <!-- Details of the exercise -->

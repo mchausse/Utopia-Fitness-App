@@ -3,6 +3,7 @@ if (!ISSET($_SESSION)) {
     session_start();
 }
 ?>
+<link rel="stylesheet" href="./css/newWorkout.css" type="text/css" />
 <div id="workouts">
     <!-- Tab labels -->
     <ul class="nav nav-tabs nav-justified">
@@ -29,8 +30,11 @@ if (!ISSET($_SESSION)) {
 
                     <div class="card">
                         <div class="card-header">
-                             <span><a class="card-link" data-toggle="collapse" href="#collapseOne">Exercise #<?=$i?></a>
-                             - <?=$names[$i - 1]?></span>
+                             <span>
+                                <a class="card-link" data-toggle="collapse" href="#collapseOne">Exercise #<?=$i?></a>
+                                - <?=$names[$i - 1]?>
+                                <i class="fa fa-check-square" style="font-size:24px;color:green;position:absolute;right:10px;"></i>
+                            </span>
                         </div>
                     </div>
 
