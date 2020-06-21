@@ -63,8 +63,46 @@ function showExercises($exercises) {
                 - <?=$exercise->getDate()?>
             </div>
             <div id="exercise<?=$exercise->getId()?>" data-parent="#pastExercises" class="collapse">
-                <div class="card-body" >
-                test
+                <div class="card-body">
+                    
+                    <!-- Series and Repetitions -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <?=$exercise->getNbSeries()?> series
+                                </th>
+                                
+                                <?php
+                                // Add the same number of header than series to fit with the number of td
+                                for($ii = 1; $ii < $exercise->getNbSeries(); $ii++) {
+                                    ?>
+                                    <th></th>
+                                    <?php
+                                }
+                                ?>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <?php
+                                for($ii = 0; $ii < $exercise->getNbSeries(); $ii++) {
+                                    $repetition = explode("/", $exercise->getRepetitions())
+                                    ?>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" value="<?=$repetition[$ii]?>" class="form-control" disabled="disabled"/>
+                                        </div>
+                                    </td>
+                                    <?php
+                                }
+                                ?>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
                 </div>
             </div>
         </div>
