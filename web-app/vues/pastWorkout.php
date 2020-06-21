@@ -16,27 +16,62 @@ if (!ISSET($_SESSION)) {
     <!-- Tab panes -->
     <div class="tab-content">
         <div id="pastExercises">
-        
+            <h4>This week's exercises</h4>
+            <hr />
             <?php
-            if (ISSET($_REQUEST['pastExerciseArray'])) {
-                $exercises = $_REQUEST['pastExerciseArray'];
-                for($i=0; $i < sizeof($exercises); $i++) {
-                    $exercise = $exercises[$i];
-                    ?>
+            if (ISSET($_REQUEST['thisWeekExercise'])) {
+                showExercises($_REQUEST['thisWeekExercise']);
+            }
+            ?>
 
-                    <div class="card">
-                        <div class="card-header">
-                             <span>
-                                <a class="card-link" data-toggle="collapse" href="#collapseOne"><?=$exercise->getName()?></a>
-                                - <?=$exercise->getDate()?>
-                             </span>
-                        </div>
-                    </div>
+            
+            <?php
+            if (ISSET($_REQUEST['lastTwoWeeksExercise'])) {
+                ?>
+                <br />
+                <h4>Last two week's exercises</h4>
+                <hr />
+                <?php
+                showExercises($_REQUEST['lastTwoWeeksExercise']);
+            }
+            ?>
 
-                    <?php
-                }
+            <?php
+            if (ISSET($_REQUEST['moreThanTwoWeeksExercise'])) {
+                ?>
+                <br />
+                <h4>More than two week's exercises</h4>
+                <hr />
+                <?php
+                showExercises($_REQUEST['moreThanTwoWeeksExercise']);
+            } else {
+                ?>
+                <br />
+                <h4>No exercises past the last two week</h4>
+                <hr />
+                <?php
             }
             ?>
         </div>
     </div>
 </div>
+
+<?php
+function showExercises($exercises) {
+    for($i=0; $i < sizeof($exercises); $i++) {
+        $exercise = $exercises[$i];
+        ?>
+
+        <div class="card">
+            <div class="card-header">
+                    <span>
+                    <a class="card-link" data-toggle="collapse" href="#collapseOne"><?=$exercise->getName()?></a>
+                    - <?=$exercise->getDate()?>
+                    </span>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+?>

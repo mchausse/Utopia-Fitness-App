@@ -11,8 +11,8 @@ class ExerciseService extends ExerciseDAO {
         return parent::selectAll();
     }
     
-    function selectAllOrderByDateAsc() {
-        return parent::selectAllOrderByDateAsc();
+    function selectAllOrderByDateDesc() {
+        return parent::selectAllOrderByDateDesc();
     }
 
 }
