@@ -19,11 +19,11 @@ if (!ISSET($_SESSION)) {
             <span class="pastExercisesTitle">This week's exercises</span>
             <hr />
             <?php
-            if (ISSET($_REQUEST['thisWeekExercise'])) {
+            if (sizeof($_REQUEST['thisWeekExercise'])) {
                 showExercises($_REQUEST['thisWeekExercise']);
             }
 
-            if (ISSET($_REQUEST['lastTwoWeeksExercise'])) {
+            if (sizeof($_REQUEST['lastTwoWeeksExercise'])) {
                 ?>
                 <br />
                 <span class="pastExercisesTitle">Last two week's exercises</span >
@@ -32,7 +32,7 @@ if (!ISSET($_SESSION)) {
                 showExercises($_REQUEST['lastTwoWeeksExercise']);
             }
             
-            if (ISSET($_REQUEST['moreThanTwoWeeksExercise'])) {
+            if (sizeof($_REQUEST['moreThanTwoWeeksExercise'])) {
                 ?>
                 <br />
                 <span  class="pastExercisesTitle">More than two week's exercises</span >
@@ -58,8 +58,8 @@ function showExercises($exercises) {
         ?>
 
         <div class="card exerciseCard" class="collapse">
-            <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#exercise<?=$exercise->getId()?>"><?=$exercise->getName()?></a>
+            <div class="card-header" data-toggle="collapse" href="#exercise<?=$exercise->getId()?>">
+                <a class="card-link"><?=$exercise->getName()?></a>
                 - <?=$exercise->getDate()?>
             </div>
             <div id="exercise<?=$exercise->getId()?>" data-parent="#pastExercises" class="collapse">
