@@ -1,12 +1,27 @@
 <?php
 require_once('./controleur/Action.interface.php');
 require_once('/model/service/ExerciseService.class.php');
+require_once('/model/service/ExerciseNamesService.class.php');
+require_once('/model/classe/ExerciseNames.class.php');
 class InsertNewExerciseAction implements Action {
 	public function execute(){
 		if (!ISSET($_SESSION)) { 
             session_start();
         }
 
+		// Generate the list of exercise names
+		$exerciseNamesService = new ExerciseNamesService();
+		$exerciseNames = array();
+
+		// Get the names
+		$exerciseNames = $exerciseNamesService->selectAll();
+
+		// Send them to the view
+		$_REQUEST['exerciseNames'] = array();
+		foreach($exerciseNames as $name) {
+			array_push($_REQUEST['exerciseNames'], $name);
+        }
+        
         // Treat the incoming informations
         $newExercise = new Exercise();
         $newExercise->setName($_REQUEST['name']);
@@ -22,13 +37,20 @@ class InsertNewExerciseAction implements Action {
             }
         }
 
+        // Forward the exercise count
+        $_REQUEST["newExercise"] = $_REQUEST["newExercise"] + 1;
+
         // Insert the new exercise
         $exerciseService = new ExerciseService();
         $exerciseService->insert($newExercise);
 
-        // Forward the exercise count
-        $_REQUEST["newExercise"] = $_REQUEST["newExercise"] + 1;
-        array_push($_SESSION["newExerciseNames"], $newExercise->getName());
+        // Set exercise name
+		foreach($exerciseNames as $name) {
+            if($newExercise->getName() == $name->getId()) {
+                array_push($_SESSION["newExerciseNames"], $name->getName());
+                echo $name->getName();
+            }
+        }
 
         // Clear the values
         $newExercise = null;
