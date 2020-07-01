@@ -43,10 +43,14 @@ if (ISSET($_REQUEST["repetition1"])) {
                 <div class="form-group">
                     <label for="sel1">Select exercise:</label>
                     <select class="form-control" id="sel1" name="name" value="<?=$name?>">
-                        <option value="push up">Push up</option>
-                        <option value="Jumping Jack">Jumping Jack</option>
-                        <option value="Sit up">Sit up</option>
-                        <option value="Biceps">Biceps</option>
+                        <?php
+                        foreach($_REQUEST["exerciseNames"] as $name) {
+                        ?>
+                            <option value="<?=$name->getId()?>"><?=$name->getName()?></option>
+                        
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 

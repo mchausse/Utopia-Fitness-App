@@ -19,6 +19,7 @@ if (!ISSET($_SESSION)) {
         <div id="newExercises">
 
             <?php
+            // Insert the form for new exercise
             include_once('vues/form/newExercise.php');
             
             // If we come from inserting a new action
