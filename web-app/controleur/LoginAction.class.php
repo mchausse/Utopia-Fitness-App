@@ -1,8 +1,25 @@
 <?php
 require_once('./controleur/Action.interface.php');
+require_once('/model/service/ExerciseNamesService.class.php');
+require_once('/model/classe/ExerciseNames.class.php');
 class LoginAction implements Action {
 	public function execute(){
+
+		// Generate the list of exercise names
+		$exerciseNamesService = new ExerciseNamesService();
+		$exerciseNames = array();
+
+		// Get the names
+		$exerciseNames = $exerciseNamesService->selectAll();
+
+		// Send them to the view
+		$_REQUEST['exerciseNames'] = array();
+		foreach($exerciseNames as $name) {
+			array_push($_REQUEST['exerciseNames'], $name);
+		}
 		return "newWorkout"; // TEMPORAIRE
+
+
 		if (!ISSET($_REQUEST["adresse"])) { return "login"; }
 		if (!$this->valide()) { return "login"; }
 		require_once('./modele/CompteDAO.class.php');
