@@ -6,6 +6,7 @@ if (!ISSET($_SESSION)) {
 $name = "";
 $repetition1 = "";
 $nbSeries = "1";
+$weight = "";
 $actionInsertNewExercise = "insertNewExerciseAction";
 
 // Number and names form this sessions exercise
@@ -52,6 +53,12 @@ if (ISSET($_REQUEST["repetition1"])) {
                         }
                         ?>
                     </select>
+                </div>
+
+                <!-- Weight input -->
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <input type="text" class="form-control" id="weight" name="weight" value="<?=$weight?>">
                 </div>
                 
                 <!-- Serials and Repetitions -->
