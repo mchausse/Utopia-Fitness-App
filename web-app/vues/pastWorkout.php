@@ -78,7 +78,8 @@ function showExercises($exercises) {
                         <thead>
                             <tr>
                                 <th>
-                                    <?=$exercise->getNbSeries()?> series
+                                    <?=$exercise->getNbSeries()?> series | 
+                                    <?=$exercise->getWeight()?> lbs
                                 </th>
                                 
                                 <?php

@@ -16,12 +16,14 @@ class ExerciseDAO extends ExerciseRequest {
         $name = $exercise->getName();
         $nbSeries = $exercise->getNbSeries();
         $repetitions = $exercise->getRepetitions();
+        $weight = $exercise->getWeight();
     
 		try{
             $preparedRequest->execute(array(':idExercise' => $idExercise,
                                             ':name' => $name,
                                             ':nbSeries' => $nbSeries,
-                                            ':repetitions' => $repetitions));
+                                            ':repetitions' => $repetitions,
+                                            ':weight' => $weight));
         } catch(PDOException $error){
             echo $error->getMessage();
         } finally {
