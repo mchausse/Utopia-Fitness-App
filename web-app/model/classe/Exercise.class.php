@@ -4,7 +4,8 @@ class Exercise {
             $name,
             $date,
             $nbSeries,
-            $repetitions;
+            $repetitions,
+            $weight;
 
     public function getId() {
         return $this->id;
@@ -21,6 +22,10 @@ class Exercise {
     public function getRepetitions() {
         return $this->repetitions;
     }
+    public function getWeight() {
+        return $this->weight;
+    }
+    
     public function setId($id) {
         $this->id = $id;
     }
@@ -36,12 +41,17 @@ class Exercise {
     public function setRepetitions($repetitions) {
         $this->repetitions = $repetitions;
     }
+    public function setWeight($weight) {
+        $this->weight = $weight;
+    }
+
     public function loadFromArray($array){
         $this->id=$array["idExercise"];
         $this->name=$array["name"];
         $this->date=$array["date"];
         $this->nbSeries=$array["nbSeries"];
         $this->repetitions=$array["repetitions"];
+        $this->weight=$array["weight"];
     }
     public function loadFromObject($object){
         $this->id=$object->id;
@@ -49,6 +59,7 @@ class Exercise {
         $this->date=$object->date;
         $this->nbSeries=$object->nbSeries;
         $this->repetitions=$object->repetitions;
+        $this->weight=$object->weight;
     }
 }
 ?>

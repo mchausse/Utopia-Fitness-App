@@ -26,6 +26,7 @@ class InsertNewExerciseAction implements Action {
         $newExercise = new Exercise();
         $newExercise->setName($_REQUEST['name']);
         $newExercise->setNbSeries($_REQUEST['nbSeries']);
+        $newExercise->setWeight($_REQUEST['weight']);
 
         // setting each repetition value for the number of series registered
         $newExercise->setRepetitions("");
