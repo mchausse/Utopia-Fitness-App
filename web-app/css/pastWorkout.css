@@ -13,3 +13,9 @@
     background-image: url(../img/pastWorkout.jpg);
   }
 }
+
+.pastExercisesTitle {
+  font-size: 25;
+  font-weight: lighter;
+  margin: 0.6em;
+}
