@@ -4,6 +4,7 @@ require_once('./controleur/LoginAction.class.php');
 require_once('./controleur/NewWorkoutAction.class.php');
 require_once('./controleur/PastWorkoutAction.class.php');
 require_once('./controleur/InsertNewExerciseAction.class.php');
+require_once('./controleur/WorkoutChartsAction.class.php');
 
 class ActionBuilder{
 	public static function getAction($nomAction){
@@ -16,6 +17,8 @@ class ActionBuilder{
 				return new PastWorkoutAction();
 			case "insertNewExerciseAction" :
 				return new InsertNewExerciseAction();
+			case "workoutChartsAction" :
+				return new WorkoutChartsAction();
 			default :
 				return new DefaultAction();
 		}

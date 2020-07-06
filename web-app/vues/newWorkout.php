@@ -13,6 +13,9 @@ if (!ISSET($_SESSION)) {
         <li class="nav-item">
             <a class="nav-link" href="?action=pastWorkoutAction">Past Workout</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?action=workoutChartsAction">Workout Charts</a>
+        </li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
