@@ -14,6 +14,19 @@ class PastWorkoutAction implements Action {
 		$exercises = array();
 		$currentDate = gmdate("Y-m-j h:i:s");
 		date_default_timezone_set("America/New_York");
+		
+		// Generate the list of exercise names
+		$exerciseNamesService = new ExerciseNamesService();
+		$exerciseNames = array();
+
+		// Get the names
+		$exerciseNames = $exerciseNamesService->selectAll();
+
+		// Send them to the view
+		$_REQUEST['exerciseNames'] = array();
+		foreach($exerciseNames as $name) {
+			array_push($_REQUEST['exerciseNames'], $name);
+        }
 
 		// Fetching the data
 		$exercises = $exerciseService->selectAllOrderByDateAsc();
