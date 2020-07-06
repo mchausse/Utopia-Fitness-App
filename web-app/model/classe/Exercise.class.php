@@ -54,7 +54,7 @@ class Exercise {
         $this->weight=$array["weight"];
     }
     public function loadFromObject($object){
-        $this->id=$object->id;
+        $this->id=$object->idExercise;
         $this->name=$object->name;
         $this->date=$object->date;
         $this->nbSeries=$object->nbSeries;
