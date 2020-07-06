@@ -87,7 +87,7 @@ if(ISSET($_REQUEST['name'])) {
                 foreach($_REQUEST["exerciseNames"] as $name) {
                 ?>
                     <form method="post" action="">
-                        <input type="submit" value="<?=$name->getName()?>" name="name"></input>
+                        <input class="card-title" type="submit" value="<?=$name->getName()?>" name="name"></input>
                         <input type="hidden" name="idName" value="<?=$name->getId()?>"/>
                         <input type="hidden" name="action" value="workoutChartsAction"/>
                     </form>
