@@ -70,7 +70,18 @@ function showExercises($exercises) {
 
         <div class="card exerciseCard" class="collapse">
             <div class="card-header" data-toggle="collapse" href="#exercise<?=$exercise->getId()?>">
-                <a class="card-link"><?=$exercise->getName()?></a>
+                <a class="card-link">
+                    
+                    <?php
+                    // Change the id of the name of the acutal exercise name
+                    foreach($_REQUEST['exerciseNames'] as $exerciseName) {
+                        if($exerciseName->getId() == $exercise->getName()) {
+                            echo $exerciseName->getName();
+                        }
+                    }
+                    ?>
+
+                </a>
                 - <?=$exercise->getDate()?>
             </div>
             <div id="exercise<?=$exercise->getId()?>" data-parent="#pastExercises" class="collapse">
