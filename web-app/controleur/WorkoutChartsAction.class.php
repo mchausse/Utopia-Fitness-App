@@ -44,9 +44,14 @@ class WorkoutChartsAction implements Action {
         $maxNumberOfRep = 0;
         foreach($result as $data) {
             $arrayTemp = array();
-            array_push($arrayTemp, $i);
-            $maxNumberOfRep = 0;
 
+            // Add the id
+            array_push($arrayTemp, $i);
+
+            // Add the weight
+            array_push($arrayTemp, (int)$data->weight);
+
+            $maxNumberOfRep = 0;
             // Create an array for the repetition string
             foreach(explode("/", $data->repetitions) as $rep) {
                 array_push($arrayTemp, (int)$rep);

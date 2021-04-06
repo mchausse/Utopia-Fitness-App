@@ -21,15 +21,16 @@ if(ISSET($_REQUEST['name'])) {
 
     function drawChart() {
     var data = new google.visualization.DataTable();
-    var maxNumberOfRep = <?php echo $maxNumberOfRep?> + 1;
+    var maxNumberOfRep = <?php echo $maxNumberOfRep?> + 5;
     var unsafeData = <?php echo json_encode($chartData)?>;
     var name = "<?php echo $name?>";
     var safeData = [];
 
     // Set the right number the column for the number of rep
     data.addColumn('number', 'Date');
-    for(var i = 1; i < maxNumberOfRep; i++) {
-        data.addColumn('number', 'Rep '+i);
+    data.addColumn('number', 'Weight');
+    for(var i = 2; i < maxNumberOfRep; i++) {
+        data.addColumn('number', 'Rep ' + (i - 1));
     }
 
     // Validate if all the rows have the right number of row
@@ -49,7 +50,6 @@ if(ISSET($_REQUEST['name'])) {
 
     var options = {
         title: 'Repetitions by series for '+name,
-        curveType: 'function',
         legend: { position: 'bottom' },
         hAxis: {
             min: 0
