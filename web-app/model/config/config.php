@@ -4,6 +4,6 @@ interface Config {
     const DB_HOST = "localhost";
     const DB_USER = "root";
     const DB_PWD = "root";
-    const DB_NAME = "utopia-fitness-app";
+    const DB_NAME = "utopia-fitness-app-test";
 }
 ?>
